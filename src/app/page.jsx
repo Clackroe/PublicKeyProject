@@ -6,6 +6,8 @@ import Person from "./components/person";
 export default function Home() {
     const [message, setMessage] = useState('');
     const [encrypted, setEncrypted] = useState('');
+    
+
 
     const handleMessageChange = (e) => {
         setEncrypted('');
@@ -17,11 +19,13 @@ export default function Home() {
         setEncrypted(encryptedMessage);
     };
 
+
     return (
         <main className="flex flex-col items-center justify-between p-24 min-h-screen">
+            <h1 class="text-3xl">Public Key Cryptography Encoder</h1>
             <div className="w-full max-w-5xl font-mono text-sm">
                 <div className="flex justify-center">
-                    {[...Array(3)].map((_, index) => (
+                {[...Array(3)].map((_, index) => (
                         <Person key={index} message={message} encrypted={encrypted} setEncrypted={handleEncryptChange} />
                     ))}
                 </div>

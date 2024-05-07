@@ -7,15 +7,21 @@ function Person({ message, setEncrypted, encrypted }) {
 
     const [person, setPerson] = useState(null);
     const [decrypted, setDecrpyted] = useState(null);
+    const possibleNames = ["John", "Layka", "Ontnoi", "Nemo", "Tasha", "Peikachu", "Forevernice", "DONNY", "Dromio", "Poshta"];
+    const [name, setName] = useState(nombre());
 
     useEffect(() => {
         setPerson(new Encrypt());
     }, []);
 
     function rerollKeys() {
-        setPerson(new Encrypt);
+        setPerson(new Encrypt());
     }
 
+    function nombre() {
+        const randomIndex = Math.floor(Math.random() * possibleNames.length);
+        return possibleNames[randomIndex];
+    }
 
     function renderObject(obj) {
         let out = "";
@@ -62,6 +68,7 @@ function Person({ message, setEncrypted, encrypted }) {
                     height={100}
                     alt="PFP"
                 />
+                <h1 className="text-2xl hover:font-bold">{name}</h1>
                 <p className="mb-2 font-mono">Private: {renderObject(person && person.privateKey)}</p>
                 <p className="mb-3 font-mono">Public: {renderObject(person && person.publicKey)}</p>
                 <div className='flex'>
